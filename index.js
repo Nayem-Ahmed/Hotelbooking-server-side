@@ -33,8 +33,10 @@ const verifyToken = async (req, res, next) => {
     next()
   })
 }
+ 
+const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.8wqrrau.mongodb.net/?retryWrites=true&w=majority`;
 
-const client = new MongoClient(process.env.DB_URI, {
+const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -107,9 +109,9 @@ async function run() {
 run().catch(console.dir)
 
 app.get('/', (req, res) => {
-  res.send('Hello from StayVista Server..')
+  res.send('Hello from  hotelbooking..')
 })
 
 app.listen(port, () => {
-  console.log(`StayVista is running on port ${port}`)
+  console.log(`Hotelbooking is running on port ${port}`)
 })
